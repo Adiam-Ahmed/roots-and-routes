@@ -1,0 +1,21 @@
+@use '../../styles/global.scss' as *;
+
+.hero{
+    background-color: $secondary-color;
+    padding-top: 1rem;
+    &__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem
+    }
+    &__img{
+        width: 95%;
+    }
+
+    
+
+
+    
+}

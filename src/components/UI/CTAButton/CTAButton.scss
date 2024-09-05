@@ -34,9 +34,16 @@
         background-color: $primary-color;
         color: $secondary-color;
         &:hover {
-            text-decoration: underline;
             background-color: darken($primary-color, 15%);
             color: $secondary-color;
+        }
+        &:active {
+            background-color: $color-muted-gold;
+            color: $color-white;
+
+        &:hover {
+                text-decoration: underline;
+            }
         }
 
     }
@@ -51,7 +58,7 @@
         }
 
         &:active {
-            background-color: $color-instock-black;
+            background-color: $color-muted-gold;
             color: $color-white;
 
             &:hover {
