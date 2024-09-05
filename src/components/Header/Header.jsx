@@ -1,7 +1,8 @@
 import React from 'react'
-import Logo from '../../assets/Logo.png'
 import './Header.scss'
+import Logo from '../../assets/Logo.png'
 import CTAButton from "../UI/CTAButton/CTAButton";
+
 
 const Header = () => {
     return (
@@ -16,7 +17,7 @@ const Header = () => {
                     <h2 className='header__logo'>Roots & Routes</h2>
                 </section>
                 <CTAButton
-                    className={`header__nav--button`}
+                    className={`header`}
                     text="Sign In"
                     type="header"
                 // onClick={}
@@ -24,6 +25,7 @@ const Header = () => {
 
             </section>
         </header>
+        
     )
 }
 
