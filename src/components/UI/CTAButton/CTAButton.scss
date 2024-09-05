@@ -1,0 +1,62 @@
+@use '../../../styles/partials/variables' as *;
+@use '../../../styles/partials/mixins' as *;
+
+
+
+.cta-button__primary,
+.cta-button__header{
+    cursor: pointer;
+    border-radius: $border-radius;
+    width: 4rem;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    color: $color-white;
+    border: none;
+    height: 3rem;
+    justify-content: center;
+    font-weight: 600;
+    line-height: 1.375rem;
+    font-style: normal;
+    white-space: nowrap;
+    font-size: 0.8125rem;
+
+    @include tablet {
+        width: 10rem;
+        font-size: 0.875rem;
+        // margin: 0 1rem;
+        height: 3rem;
+    }
+}
+
+.cta-button {
+    &__primary {
+        background-color: $primary-color;
+        color: $secondary-color;
+        &:hover {
+            text-decoration: underline;
+            background-color: darken($primary-color, 15%);
+            color: $secondary-color;
+        }
+
+    }
+
+    &__header {
+        background-color: $secondary-color;
+        color:$primary-color;
+
+        &:hover {
+            background-color: darken($primary-color, 15%);
+            color: $secondary-color;
+        }
+
+        &:active {
+            background-color: $color-instock-black;
+            color: $color-white;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

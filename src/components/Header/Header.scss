@@ -1,0 +1,53 @@
+@use '../../styles/global.scss' as *;
+
+.header {
+    background-color: $primary-color;
+
+    &__container {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+    
+            @include tablet {
+                height: 11.62rem;
+                padding: 2rem;   
+            }
+    
+            @include desktop {
+                max-width: $desktop-container-width;
+                margin: 0 auto;
+            }
+        }
+
+    &__logo-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo-img {
+        margin-top: 0.5rem;
+        cursor: pointer;
+        width: 6rem;
+        height: 6rem;
+        margin-top: 0.55rem;
+
+        @include tablet {
+            width: 9rem;
+            height: 9rem;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        @include desktop {
+            width: 12rem;
+            height: 12rem;
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+    &__logo{
+        padding-left: 1rem;
+        color: $secondary-color;
+    }
+}
