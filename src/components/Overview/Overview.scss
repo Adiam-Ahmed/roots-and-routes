@@ -1,0 +1,42 @@
+@use '../../styles/global.scss' as *;
+
+.overview {
+    background-color: $primary-color;
+    padding-top: 1rem;
+    height: 73vh;
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include tablet {
+            flex-wrap: nowrap;
+        }
+    }
+
+    &__subtitle,
+    &__img {
+        padding: 1rem;
+        @include tablet{
+            flex: 1 1 50%; // This will make each item take up 50% of the container width
+            max-width: 50%; // Ensure they don’t exceed 50% of the container
+        }
+    }
+
+    &__subtitle {
+        color: $secondary-color;
+        padding: 2rem;
+        font-size: 1.5rem; // Adjust to make the text larger
+        line-height: 1.6;  // Adjust line spacing for better readability
+        text-align: center; // Center align text (optional)
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    &__img {
+        width: auto; // Adjust width if necessary
+    }
+}
