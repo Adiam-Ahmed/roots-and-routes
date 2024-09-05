@@ -1,0 +1,19 @@
+@use '../../styles/global.scss' as *;
+
+.cards {
+    background-color: $secondary-color;
+
+    &__title{
+        text-align: center;
+        padding: 2rem;
+        font-weight: 800;
+    }
+    &__item{
+        display: flex;
+        justify-content: center;
+        gap: 6rem;
+        flex-wrap: wrap;
+        padding: 2rem;
+    }
+
+}
