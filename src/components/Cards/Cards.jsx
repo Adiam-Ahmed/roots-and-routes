@@ -9,7 +9,7 @@ const Cards = () => {
     ];
     return (
         <section className="cards">
-            <h2 className="cards__title">Why Experience The Website</h2>
+            <h2 className="cards__title">The BENFITS of Roots and Routes</h2>
             <div className="cards__item">
                 {cardData.map((card, index) => (
                     <Card key={index} image={card.image} text={card.text} />

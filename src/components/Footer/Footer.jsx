@@ -104,11 +104,11 @@ const Footer = () => {
                 <a
                     href="/"
                     className="footer__logo footer__logo-tablet"
-                    aria-label="BandSite"
-                >BANDSITE
+                    aria-label="Roots and Routes"
+                >Roots and Routes
                 </a>
                 <p className="footer__copyright">
-                    Copyright The Bees Knees © 2023 All Rights Reserved.
+                    Copyright Roots and Routes © 2024 All Rights Reserved.
                 </p>
             </div>
         </footer>
