@@ -5,7 +5,7 @@
     min-width: 20rem;
 
     &__container {
-        color: #ffffff;
+        color: $secondary-color;
         padding: 1rem;
         display: flex;
         flex-direction: column;
@@ -52,7 +52,7 @@
     &__link {
         margin: 0;
         text-decoration: none;
-        color: white;
+        color: $secondary-color;
     }
 
     &__icon {
@@ -63,7 +63,7 @@
 
     &__logo {
         text-decoration: none;
-        color: #ffffff;
+        color: $secondary-color;
         font-size: 40px;
         line-height: 4.25rem;
         font-weight: 400;

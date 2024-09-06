@@ -4,7 +4,8 @@
 
 
 .cta-button__primary,
-.cta-button__header{
+.cta-button__header,
+.cta-button__register{
     cursor: pointer;
     border-radius: $border-radius;
     width: 4rem;
@@ -29,41 +30,51 @@
     }
 }
 
-.cta-button {
-    &__primary {
-        background-color: $primary-color;
+.cta-button__primary {
+    background-color: $primary-color;
+    color: $secondary-color;
+
+    &:hover {
+        background-color: darken($primary-color, 15%);
         color: $secondary-color;
-        &:hover {
-            background-color: darken($primary-color, 15%);
-            color: $secondary-color;
-        }
-        &:active {
-            background-color: $color-muted-gold;
-            color: $color-white;
-
-        &:hover {
-                text-decoration: underline;
-            }
-        }
-
+        text-decoration: underline;
     }
 
-    &__header {
-        background-color: $secondary-color;
-        color:$primary-color;
+    &:active {
+        background-color: $color-muted-gold;
+        color: $color-white;
+    }
+}
 
-        &:hover {
-            background-color: darken($primary-color, 15%);
-            color: $secondary-color;
-        }
+.cta-button__header {
+    background-color: $secondary-color;
+    color: $primary-color;
 
-        &:active {
-            background-color: $color-muted-gold;
-            color: $color-white;
+    &:hover {
+        background-color: darken($primary-color, 15%);
+        color: $secondary-color;
+        text-decoration: underline;
+    }
 
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+    &:active {
+        background-color: $color-muted-gold;
+        color: $color-white;
+    }
+}
+
+.cta-button__register {
+    background-color: $secondary-color;
+    color: $primary-color;
+    width: 23rem;
+
+    &:hover {
+        background-color: darken($primary-color, 15%);
+        color: $secondary-color;
+        text-decoration: underline;
+    }
+
+    &:active {
+        background-color: $color-muted-gold;
+        color: $color-white;
     }
 }
