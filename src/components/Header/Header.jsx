@@ -17,9 +17,9 @@ const Header = () => {
                     <h2 className='header__logo'>Roots & Routes</h2>
                 </section>
                 <CTAButton
-                    className= 'header'
+                    className= 'header-btn'
                     text="Sign In"
-                    type="header"
+                    type="header-btn"
                 // onClick={}
                 />
 

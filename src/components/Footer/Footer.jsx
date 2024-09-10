@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="footer__container">
                 <div className="footer__title-container">
                     <h2 className="footer__main-title">Get in Touch</h2>
-                    <div className="footer_icons">
+                    <div className="footer__icons">
                         <a
                             href="https://www.instagram.com"
                             className="footer__link"
