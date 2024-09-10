@@ -2,8 +2,16 @@ import './Hero.scss'
 import HeroImg from '../../assets/HeroImg.png'
 import CTAButton from "../UI/CTAButton/CTAButton";
 import React from 'react'
+import { useNavigate} from "react-router-dom";
 
 const Hero = () => {
+
+    const navigate = useNavigate()
+
+    const handleNavigate = (route)=>{
+        navigate(route)
+    }
+
     return (
         <section className="hero">
             <div className="hero__content">
@@ -13,7 +21,7 @@ const Hero = () => {
                     className={`header`}
                     text="Get Started"
                     type="primary"
-                // onClick={}
+                    onClick={() => handleNavigate("/signup")}
                 />
                 <img
                     src={HeroImg}
