@@ -160,7 +160,7 @@ const SignUp = () => {
                                     <div className="signup__container">
                                         <Select
                                             options={countries}
-                                            placeholder="Select your country"
+                                            placeholder="Select your country of Intrest"
                                             onChange={(option) => setFieldValue('country', option)}
                                             classNamePrefix="react-select"
                                             className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
@@ -203,8 +203,7 @@ const SignUp = () => {
                                     </div>
                                     <ErrorMessage name="confirmPassword" component="div" className="error-message" /> {/* Error message for Confirm password */}
                                     <div className='signup__container'>
-                                        <CTAButton className="register" text="Sign Up" type="register" onClick="" />
-
+                                        <CTAButton className="register" text="Sign Up" type="register"  />
                                     </div>
                                     <div className='signup__container'>
                                         <p className='login__paragraph'>Already have an Account? <br /> Login in <span className=''>here </span></p>

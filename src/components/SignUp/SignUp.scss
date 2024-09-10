@@ -41,6 +41,10 @@
         font-style: normal;
         white-space: nowrap;
         font-size: 0.8125rem;
+        &:active {
+            background-color: $color-muted-gold;
+            color: $color-white;
+        }
     }
 
 

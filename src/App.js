@@ -6,6 +6,7 @@ import Overview from './components/Overview/Overview';
 import Cards from './components/Cards/Cards';
 import Footer from './components/Footer/Footer';
 import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Cards />
       <Footer />
       <SignUp />
+      <SignIn />
     </div>
   );
 }
