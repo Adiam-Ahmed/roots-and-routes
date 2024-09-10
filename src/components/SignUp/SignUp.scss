@@ -94,8 +94,14 @@
     padding: 0 !important ;
 }
 
-.login__paragraph{
-    color: $secondary-color;
+.signin__paragraph{
+    color: $secondary-color
+}
+
+.login-here{
+    color: goldenrod;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 // input::placeholder {

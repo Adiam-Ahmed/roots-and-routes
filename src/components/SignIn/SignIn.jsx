@@ -1,7 +1,7 @@
 import './SignIn.scss'
 import { useState } from 'react';
 import CTAButton from '../UI/CTAButton/CTAButton';
-// import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -114,7 +114,7 @@ const Login = () => {
                             </div>
                         </form>
                         <section className=''>
-                            <p className='login__paragraph'>No account? <br />  Sign Up <span className=''></span> </p>
+                            <p className='login__paragraph'>No account? <br />  Sign Up <Link to='/signup'><span className='login-here'>here </span></Link></p>
                         </section>
                     </section>
                 </div>

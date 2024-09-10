@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CTAButton from '../UI/CTAButton/CTAButton';
 import { getData as getCountries } from 'country-list';
 import ISO6391 from 'iso-639-1';
-// import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -156,11 +156,24 @@ const SignUp = () => {
                                     </div>
                                     <ErrorMessage name="email" component="div" className="error-message" /> {/* Error message for email */}
 
+
                                     {/* Country of Origin Field (react-select) */}
                                     <div className="signup__container">
                                         <Select
                                             options={countries}
                                             placeholder="Select your country of Intrest"
+                                            onChange={(option) => setFieldValue('country', option)}
+                                            classNamePrefix="react-select"
+                                            className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
+                                        />
+                                        <ErrorMessage name="country" component="div" className="error-message" />
+                                    </div>
+
+                                    {/* Country of Origin Field (react-select) */}
+                                    <div className="signup__container">
+                                        <Select
+                                            options={countries}
+                                            placeholder="Select your another country of Intrest"
                                             onChange={(option) => setFieldValue('country', option)}
                                             classNamePrefix="react-select"
                                             className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
@@ -179,6 +192,8 @@ const SignUp = () => {
                                         />
                                         <ErrorMessage name="language" component="div" className="error-message" />
                                     </div>
+
+                                    {/* Add here state and City and remove Language here  */}
 
                                     {/* Password Field */}
                                     <div className='signup__container'>
@@ -206,7 +221,7 @@ const SignUp = () => {
                                         <CTAButton className="register" text="Sign Up" type="register"  />
                                     </div>
                                     <div className='signup__container'>
-                                        <p className='login__paragraph'>Already have an Account? <br /> Login in <span className=''>here </span></p>
+                                        <p className='signin__paragraph'>Already have an Account? <br /> Login in <Link to='/login'><span className='login-here'>here </span></Link></p>
                                     </div>
 
                                 </section>
