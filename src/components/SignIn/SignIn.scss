@@ -1,0 +1,62 @@
+@use '../../styles/global.scss' as *;
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 80vh;
+    background-color: $secondary-color;
+
+    &__header {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+        color: $primary-color;
+
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        margin: 1.25rem 0;
+    }
+
+    &__input {
+        border-radius: $border-radius;
+        border: none;
+        width: 23rem;
+        padding: 0.5rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        border: $secondary-color 2px solid;
+        height: 4rem;
+        justify-content: center;
+        font-weight: 600;
+        line-height: 1.375rem;
+        font-style: normal;
+        white-space: nowrap;
+        font-size: 0.8125rem;
+        &:active {
+                background-color: $color-muted-gold;
+                color: $color-white;
+            }
+    }
+
+    &__paragraph {
+        padding: 1rem;
+        font-size: 1.5rem;
+        color: $primary-color;
+    }
+
+    &__bold-primary {
+        font-weight: 700;
+
+    }
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 4px;
+}

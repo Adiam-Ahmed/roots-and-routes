@@ -5,6 +5,7 @@
 
 .cta-button__primary,
 .cta-button__header,
+.cta-button__signin,
 .cta-button__register{
     cursor: pointer;
     border-radius: $border-radius;
@@ -65,6 +66,23 @@
 .cta-button__register {
     background-color: $secondary-color;
     color: $primary-color;
+    width: 23rem;
+
+    &:hover {
+        background-color: darken($primary-color, 15%);
+        color: $secondary-color;
+        text-decoration: underline;
+    }
+
+    &:active {
+        background-color: $color-muted-gold;
+        color: $color-white;
+    }
+}
+
+.cta-button__signin {
+    background-color: $primary-color;
+    color: $secondary-color;
     width: 23rem;
 
     &:hover {
