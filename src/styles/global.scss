@@ -18,16 +18,13 @@ html,
 body {
     position: relative;
     font-family: 'Inter', sans-serif;
-    min-height: 41.69rem;
-    padding-bottom: 2.5rem;
+
 
     @include tablet {
         min-height: 64rem;
     }
 
     @include desktop {
-        min-height: 57.81rem;
-        padding-bottom: 3rem;
     }
 }
 

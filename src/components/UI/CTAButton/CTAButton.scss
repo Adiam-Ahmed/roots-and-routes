@@ -4,7 +4,7 @@
 
 
 .cta-button__primary,
-.cta-button__header,
+.cta-button__header-btn,
 .cta-button__signin,
 .cta-button__register{
     cursor: pointer;
@@ -47,9 +47,9 @@
     }
 }
 
-.cta-button__header {
+.cta-button__header-btn {
     background-color: $secondary-color;
-    color: $primary-color;
+        color: $primary-color;
 
     &:hover {
         background-color: darken($primary-color, 15%);
