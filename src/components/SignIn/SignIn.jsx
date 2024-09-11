@@ -2,7 +2,9 @@ import './SignIn.scss';
 import { useState } from 'react';
 import CTAButton from '../UI/CTAButton/CTAButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { supabase } from '../../supabaseClient'; // Import Supabase client
+import { supabase } from '../../supabaseClient';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -68,6 +70,7 @@ const Login = () => {
 
     return (
         <>
+            <Header />
             <section className="login">
                 <h1 className="login__header">User Login</h1>
                 <div className="col__container">
@@ -122,6 +125,7 @@ const Login = () => {
                     </section>
                 </div>
             </section>
+            <Footer />
         </>
     );
 };

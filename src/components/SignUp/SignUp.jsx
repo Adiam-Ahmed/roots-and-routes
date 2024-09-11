@@ -1,5 +1,7 @@
 import './SignUp.scss'
 import { useState } from 'react'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import Select from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CTAButton from '../UI/CTAButton/CTAButton';
@@ -62,6 +64,7 @@ const SignUp = () => {
 
     return (
         <>
+            <Header/>
             <Formik
                 initialValues={{
                     firstName: '',
@@ -230,6 +233,7 @@ const SignUp = () => {
                     <Button onClick={handleModalClose} color="primary">Close</Button>
                 </div>
             </Modal>
+            <Footer />
         </>
     )
 }

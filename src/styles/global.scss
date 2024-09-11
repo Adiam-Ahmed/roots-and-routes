@@ -20,12 +20,6 @@ body {
     font-family: 'Inter', sans-serif;
 
 
-    @include tablet {
-        min-height: 64rem;
-    }
-
-    @include desktop {
-    }
 }
 
 ul {
