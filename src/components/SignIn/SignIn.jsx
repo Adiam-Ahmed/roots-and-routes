@@ -1,84 +1,78 @@
-import './SignIn.scss'
+import './SignIn.scss';
 import { useState } from 'react';
 import CTAButton from '../UI/CTAButton/CTAButton';
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios';
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
+import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../../supabaseClient'; // Import Supabase client
 
 const Login = () => {
-
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
-    const [fieldErrors, setFieldErrors] = useState({})
-    // const navigate = useNavigate()
+    const [fieldErrors, setFieldErrors] = useState({});
+    const [loginError, setLoginError] = useState('');
 
     const validateForm = () => {
-        const errors = {}
+        const errors = {};
 
         if (!formData.username.trim()) {
-            errors.username = "username is required"
+            errors.username = 'Username is required';
         }
         if (!formData.password.trim()) {
-            errors.password = "password is required"
+            errors.password = 'Password is required';
         }
-        setFieldErrors(errors)
+        setFieldErrors(errors);
 
         // Return true if no errors
         return Object.keys(errors).length === 0;
-    }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevFormData => ({
+        setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value,
         }));
     };
 
     const handleLogin = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (validateForm()) {
             try {
-                const loginRes = await axios.post(`${SERVER_URL}/auth/login`, {
-                    username: formData.username,
-                    password: formData.password,
-                }, {
-                    withCredentials: true  // Ensure credentials are sent if needed
+                const { username, password } = formData;
+
+                // Log in using Supabase authentication
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: username, // Supabase requires an email for login
+                    password,
                 });
 
-                if (loginRes.status === 200) {
-                    localStorage.setItem('authToken', loginRes.data.token);
-                    // handleLoginHeader();
-                    // navigate('/profile');
+                if (error) {
+                    console.error('Login failed:', error.message);
+                    setLoginError('Login failed. Please check your credentials and try again.');
+                } else {
+                    console.log('Login successful:', data);
+                    // You can store the token or redirect the user to the dashboard
+                    localStorage.setItem('authToken', data.session.access_token);
+                    // Redirect or navigate to a protected page like Dashboard
+                    // Redirect to dashboard
+                    navigate('/dashboard');
                 }
             } catch (err) {
-                if (err.response && err.response.status === 404) {
-                    setFieldErrors(prevErrors => ({
-                        ...prevErrors,
-                        general: "User not found",
-                    }));
-                } else {
-                    setFieldErrors(prevErrors => ({
-                        ...prevErrors,
-                        general: "Login failed. Please try again.",
-                    }));
-                }
-                console.error("Login failed:", err);
+                console.error('Login error:', err);
+                setLoginError('An unexpected error occurred. Please try again.');
             }
         }
-    }
+    };
 
     return (
         <>
             <section className="login">
                 <h1 className="login__header">User Login</h1>
                 <div className="col__container">
-                    <section className='col-one'>
-                    </section>
-                    <section className='col-one'>
+                    <section className="col-one"></section>
+                    <section className="col-one">
                         <form onSubmit={handleLogin}>
                             <div className="login__container">
                                 <label htmlFor="login_username" className="login__box">
@@ -87,13 +81,14 @@ const Login = () => {
                                         type="text"
                                         id="login_username"
                                         name="username"
-                                        placeholder="Username"
+                                        placeholder="Username (Email)"
                                         value={formData.username}
                                         onChange={handleChange}
                                     />
-                                    {fieldErrors.username && <p className="error-message">{fieldErrors.username}</p>}
+                                    {fieldErrors.username && (
+                                        <p className="error-message">{fieldErrors.username}</p>
+                                    )}
                                 </label>
-
                             </div>
                             <div className="login__container">
                                 <label htmlFor="login_password" className="login__box">
@@ -106,24 +101,29 @@ const Login = () => {
                                         value={formData.password}
                                         onChange={handleChange}
                                     />
-                                    {fieldErrors.password && <p className="error-message">{fieldErrors.password}</p>}
+                                    {fieldErrors.password && (
+                                        <p className="error-message">{fieldErrors.password}</p>
+                                    )}
                                 </label>
                             </div>
+                            {loginError && <p className="error-message">{loginError}</p>}
                             <div className="login__container">
-                                <CTAButton className="signin" text="Sign Up" type="signin"  />
+                                <CTAButton className="signin" text="Sign In" type="signin" />
                             </div>
                         </form>
-                        <section className=''>
-                            <p className='login__paragraph'>No account? <br />  Sign Up <Link to='/signup'><span className='login-here'>here </span></Link></p>
+                        <section>
+                            <p className="login__paragraph">
+                                No account? <br /> Sign Up{' '}
+                                <Link to="/signup">
+                                    <span className="login-here">here </span>
+                                </Link>
+                            </p>
                         </section>
                     </section>
                 </div>
             </section>
         </>
-
-
-
-    )
-}
+    );
+};
 
 export default Login;

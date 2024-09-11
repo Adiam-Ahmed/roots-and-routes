@@ -5,20 +5,20 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CTAButton from '../UI/CTAButton/CTAButton';
 import { getData as getCountries } from 'country-list';
 import ISO6391 from 'iso-639-1';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
+import { Link } from 'react-router-dom';
+import { supabase } from '../../supabaseClient';
+import { Modal, Button } from '@mui/material'; // Import Modal and Button
 
 const SignUp = () => {
-    const [fieldErrors, setFieldErrors] = useState({})
+    const [fieldErrors, setFieldErrors] = useState({});
+    const [modalOpen, setModalOpen] = useState(false); // State to control modal visibility
+    const [modalMessage, setModalMessage] = useState(""); // State to control modal message
 
     // Generate country options
     const countries = getCountries().map((country) => ({
         value: country.code,
         label: country.name,
     }));
-
     // Generate language options
     const languages = ISO6391.getAllNames().map((language) => ({
         value: ISO6391.getCode(language),
@@ -26,87 +26,81 @@ const SignUp = () => {
     }));
 
     const validateForm = (values) => {
-        const errors = {}
+        const errors = {};
         if (!values.firstName || values.firstName.length < 3) {
-            errors.firstName = 'firstName must be at least 3 character';
+            errors.firstName = 'First name must be at least 3 characters';
         }
-
         if (!values.lastName || values.lastName.length < 3) {
-            errors.lastName = 'last Name must be at least 3 character';
+            errors.lastName = 'Last name must be at least 3 characters';
         }
         if (!values.email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
         }
-
         if (!values.country) {
             errors.country = 'Country of origin is required';
         }
         if (!values.language) {
             errors.language = 'Language selection is required';
         }
-
+        if (!values.state) {
+            errors.state = 'State is required';
+        }
+        if (!values.city) {
+            errors.city = 'City is required';
+        }
         if (!values.password || values.password.length < 6) {
             errors.password = 'Password must be at least 6 characters';
         }
-
         if (!values.confirmPassword || values.confirmPassword !== values.password) {
             errors.confirmPassword = 'Passwords must match';
         }
-        // Update the fieldErrors state
         setFieldErrors(errors);
+        return errors;
+    };
 
-        console.log(values)
-
-        return errors
-
-    }
-
-    // const navigate = useNavigate()
-
-
+    const handleModalClose = () => setModalOpen(false);
 
     return (
         <>
             <Formik
                 initialValues={{
-                    firstName: '', // Initial value for firstName
-                    email: '', // Initial value for email
-                    lastName: '', // Initial value for name
+                    firstName: '',
+                    email: '',
+                    lastName: '',
                     country: null,
                     language: null,
-                    password: '', // Initial value for password
-                    confirmPassword: '', // Initial value for confirm password
+                    state: '',
+                    city: '',
+                    password: '',
+                    confirmPassword: '',
                 }}
-                validate={validateForm} // Use custom validation function
+                validate={validateForm}
                 onSubmit={async (values, { setSubmitting }) => {
-                    const { firstName, email, lastName, password, country, language } = values;
+                    const { email, password, firstName, lastName, country, language } = values;
 
                     try {
-                        const signUpRes = await axios.post(`${SERVER_URL}/auth/signup`, {
+                        const { data, error } = await supabase.auth.signUp({
                             email,
-                            firstName,
-                            lastName,
-                            country: country.label,
-                            language: language.label,
                             password,
+                            options: {
+                                data: {
+                                    firstName,
+                                    lastName,
+                                    country: country.label,
+                                    language: language.label,
+                                },
+                            },
                         });
 
-                        if (signUpRes.status === 201) {
-                            const loginRes = await axios.post(`${SERVER_URL}/auth/login`, { firstName, password });
-
-                            if (loginRes.status === 200) {
-                                // If the login is successful, store the returned token in localStorage
-                                localStorage.setItem('authToken', loginRes.data.token)
-                                // Then redirect to profile page
-                                // navigate('/profile')
-                                console.log('sucesss')
-                            } else {
-                                // navigate('/login')
-                                console.log('not sucesss')
-                            }
+                        if (error) {
+                            setModalMessage('Error signing up: ' + error.message);
+                        } else {
+                            setModalMessage('User signed up successfully! An email has been sent to verify your account');
                         }
+                        setModalOpen(true); // Open the modal
                     } catch (err) {
-                        console.log("Error: ", err);
+                        setModalMessage("Error: " + err);
+                        setModalOpen(true); // Open the modal on error
                     } finally {
                         setSubmitting(false);
                     }
@@ -115,13 +109,9 @@ const SignUp = () => {
                 {({ isSubmitting, touched, setFieldValue }) => (
                     <Form>
                         <section className='signup'>
-                            <h1 className='signup__header'> User Sign Up</h1>
-                            {/* firstName Field */}
-
+                            <h1 className='signup__header'>User Sign Up</h1>
                             <section className='col__container'>
-                                <section className='col-one'>
-
-                                </section>
+                                <section className='col-one'></section>
                                 <section className='col-two'>
                                     <div className='signup__container'>
                                         <Field
@@ -129,112 +119,119 @@ const SignUp = () => {
                                             name="firstName"
                                             placeholder='Enter your First Name'
                                             className={touched.firstName && fieldErrors.firstName ? 'signup__error-border' : 'signup__input'}
-                                        /> {/* Input for firstName */}
-
+                                        />
                                     </div>
-                                    <ErrorMessage name="firstName" component="div" className="error-message" />{/* Error message for firstName */}
-                                    {/* Name Field */}
+                                    <ErrorMessage name="firstName" component="div" className="error-message" />
                                     <div className='signup__container'>
                                         <Field
                                             type="text"
                                             name="lastName"
                                             placeholder='Enter Your Last Name'
                                             className={touched.lastName && fieldErrors.lastName ? 'signup__error-border' : 'signup__input'}
-                                        /> {/* Input for lastName */}
-
+                                        />
                                     </div>
-                                    <ErrorMessage name="lastName" component="div" className=" error-message" /> {/* Error message for name */}
-                                    {/* Email Field */}
+                                    <ErrorMessage name="lastName" component="div" className="error-message" />
                                     <div className='signup__container'>
                                         <Field
                                             type="email"
                                             name="email"
                                             placeholder='Enter your Email'
                                             className={touched.email && fieldErrors.email ? 'signup__error-border' : 'signup__input'}
-                                        /> {/* Input for email */}
-
+                                        />
                                     </div>
-                                    <ErrorMessage name="email" component="div" className="error-message" /> {/* Error message for email */}
-
-
-                                    {/* Country of Origin Field (react-select) */}
+                                    <ErrorMessage name="email" component="div" className="error-message" />
                                     <div className="signup__container">
                                         <Select
                                             options={countries}
-                                            placeholder="Select your country of Intrest"
+                                            placeholder="Select your country of Interest"
                                             onChange={(option) => setFieldValue('country', option)}
                                             classNamePrefix="react-select"
                                             className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
                                         />
                                         <ErrorMessage name="country" component="div" className="error-message" />
                                     </div>
-
-                                    {/* Country of Origin Field (react-select) */}
                                     <div className="signup__container">
                                         <Select
                                             options={countries}
-                                            placeholder="Select your another country of Intrest"
+                                            placeholder="Select another country of Interest"
                                             onChange={(option) => setFieldValue('country', option)}
                                             classNamePrefix="react-select"
                                             className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
                                         />
                                         <ErrorMessage name="country" component="div" className="error-message" />
                                     </div>
-
-                                    {/* Language Field (react-select) */}
                                     <div className="signup__container">
                                         <Select
                                             options={languages}
                                             placeholder="Select your language"
                                             onChange={(option) => setFieldValue('language', option)}
                                             classNamePrefix="react-select"
-                                            className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
+                                            className={touched.language && fieldErrors.language ? 'signup__error-border' : 'signup__input'}
                                         />
                                         <ErrorMessage name="language" component="div" className="error-message" />
                                     </div>
-
-                                    {/* Add here state and City and remove Language here  */}
-
-                                    {/* Password Field */}
+                                    <div className="signup__container">
+                                        <Field
+                                            type="text"
+                                            name="state"
+                                            placeholder="Enter your State"
+                                            className={touched.state && fieldErrors.state ? 'signup__error-border' : 'signup__input'}
+                                        />
+                                        <ErrorMessage name="state" component="div" className="error-message" />
+                                    </div>
+                                    <div className="signup__container">
+                                        <Field
+                                            type="text"
+                                            name="city"
+                                            placeholder="Enter your City"
+                                            className={touched.city && fieldErrors.city ? 'signup__error-border' : 'signup__input'}
+                                        />
+                                        <ErrorMessage name="city" component="div" className="error-message" />
+                                    </div>
                                     <div className='signup__container'>
                                         <Field
                                             type="password"
                                             name="password"
                                             placeholder='Enter Password'
                                             className={touched.password && fieldErrors.password ? 'signup__error-border' : 'signup__input'}
-                                        /> {/* Input for Password */}
-
+                                        />
                                     </div>
-                                    <ErrorMessage name="password" component="div" className="error-message" /> {/* Error message for Password */}
-                                    {/* Confirm password Field */}
+                                    <ErrorMessage name="password" component="div" className="error-message" />
                                     <div className='signup__container'>
                                         <Field
                                             type="password"
                                             name="confirmPassword"
                                             placeholder='Confirm Password'
                                             className={touched.confirmPassword && fieldErrors.confirmPassword ? 'signup__error-border' : 'signup__input'}
-                                        /> {/* Input for Confirm password */}
-
+                                        />
                                     </div>
-                                    <ErrorMessage name="confirmPassword" component="div" className="error-message" /> {/* Error message for Confirm password */}
+                                    <ErrorMessage name="confirmPassword" component="div" className="error-message" />
                                     <div className='signup__container'>
-                                        <CTAButton className="register" text="Sign Up" type="register"  />
+                                        <CTAButton className="register" text="Sign Up" type="register" />
                                     </div>
                                     <div className='signup__container'>
-                                        <p className='signin__paragraph'>Already have an Account? <br /> Login in <Link to='/login'><span className='login-here'>here </span></Link></p>
+                                        <p className='signin__paragraph'>Already have an Account? <br /> Login <Link to='/login'><span className='login-here'>here</span></Link></p>
                                     </div>
-
                                 </section>
                             </section>
                         </section>
-
                     </Form>
                 )}
-
-            </Formik >
-
+            </Formik>
+            <Modal
+                open={modalOpen}
+                onClose={handleModalClose}
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+            >
+                <div className="modal-content">
+                    <h2 id="modal-title">Sign Up Status</h2>
+                    <p id="modal-description">{modalMessage}</p>
+                    <Button onClick={handleModalClose} color="primary">Close</Button>
+                </div>
+            </Modal>
         </>
     )
 }
 
-export default SignUp
+export default SignUp;

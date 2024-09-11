@@ -1,19 +1,24 @@
-import React from 'react'
-import './Header.scss'
-import Logo from '../../assets/Logo.png'
-import CTAButton from "../UI/CTAButton/CTAButton";
-import { useNavigate,  Link } from "react-router-dom";
-
-
-
+import React from 'react';
+import { supabase } from '../../supabaseClient';
+import './Header.scss';
+import Logo from '../../assets/Logo.png';
+import CTAButton from '../UI/CTAButton/CTAButton';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'
 
 const Header = () => {
+    const { user } = useAuth();
     const navigate = useNavigate();
 
-    const handleNavigate = (route) => {
-        navigate(route);
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        navigate('/login');
     };
-    
+
+    const handleSignIn = () => {
+        navigate('/login');
+    };
+
     return (
         <header className='header'>
             <section className='header__container'>
@@ -26,17 +31,24 @@ const Header = () => {
                         />
                     </Link>
                 </section>
-                <CTAButton
-                    className='header-btn'
-                    text="Sign In"
-                    type="header-btn"
-                    onClick={() => handleNavigate("/login")}
-                />
-
+                {user ? (
+                    <CTAButton
+                        className='header-btn'
+                        text="Log Out"
+                        type="header-btn"
+                        onClick={handleLogout}
+                    />
+                ) : (
+                    <CTAButton
+                        className='header-btn'
+                        text="Sign In"
+                        type="header-btn"
+                        onClick={handleSignIn}
+                    />
+                )}
             </section>
         </header>
+    );
+};
 
-    )
-}
-
-export default Header
+export default Header;
