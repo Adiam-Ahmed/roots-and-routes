@@ -12,6 +12,7 @@ const AuthGuard = ({ children }) => {
             const { data: { session } } = await supabase.auth.getSession();
             if (session?.user) {
                 setAuthenticated(true);
+                navigate('/dashboard');
             } else {
                 setAuthenticated(false);
                 navigate('/login');

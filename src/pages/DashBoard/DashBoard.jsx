@@ -15,6 +15,7 @@ import Grocery from '../../components/Grocery/Grocery';
 import ResourceHub from '../../components/ResourceHub/ResourceHub';
 import Events from '../../components/Events/Events';
 
+
 const NAVIGATION = [
   {
     kind: 'header',
@@ -56,7 +57,26 @@ const NAVIGATION = [
   },
 ];
 
+// Define your color palette based on SCSS variables
 const demoTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#9d5a4d', // Primary color
+    },
+    secondary: {
+      main: '#e6dad1', // Secondary color
+    },
+    background: {
+      default: '#ffffff', // Background color (white)
+    },
+    text: {
+      primary: '#333', // Text color, adjust if needed
+    },
+    // Optionally, you can add additional custom colors if required
+    customColors: {
+      mutedGold: '#d1a784', // Custom color for muted gold
+    },
+  },
   cssVariables: {
     colorSchemeSelector: 'data-toolpad-color-scheme',
   },
@@ -71,6 +91,7 @@ const demoTheme = createTheme({
     },
   },
 });
+
 
 function DemoPageContent({ pathname }) {
   let content;
@@ -113,7 +134,6 @@ DemoPageContent.propTypes = {
 };
 
 function DashBoard(props) {
-  const { window } = props;
 
   const [pathname, setPathname] = React.useState('/dashboard');
 
@@ -125,9 +145,6 @@ function DashBoard(props) {
     };
   }, [pathname]);
 
-  // Remove this const when copying and pasting into your project.
-  const demoWindow = window !== undefined ? window() : undefined;
-
   return (
     // preview-start
     <AppProvider
@@ -138,7 +155,6 @@ function DashBoard(props) {
       }}
       router={router}
       theme={demoTheme}
-      window={demoWindow}
     >
       <DashboardLayout>
         <DemoPageContent pathname={pathname} />
