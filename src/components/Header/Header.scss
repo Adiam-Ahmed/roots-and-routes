@@ -10,8 +10,7 @@
             justify-content: space-between;
     
             @include tablet {
-                height: 11.62rem;
-                padding: 2rem;   
+                padding: 0 2rem;   
             }
     
             @include desktop {
@@ -29,19 +28,19 @@
     &__logo-img {
         margin-top: 0.5rem;
         cursor: pointer;
-        width: 6rem;
-        height: 6rem;
+        width: 3rem;
+        height: 3rem;
         margin-top: 0.55rem;
 
         @include tablet {
-            width: 9rem;
-            height: 9rem;
+            width: 4rem;
+            height: 4rem;
             margin-left: 0;
             margin-right: auto;
         }
         @include desktop {
-            width: 12rem;
-            height: 12rem;
+            width: 6rem;
+            height: 6rem;
             margin-left: 0;
             margin-right: auto;
         }
