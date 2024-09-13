@@ -71,15 +71,17 @@ const SignUp = () => {
                     email: '',
                     lastName: '',
                     country: null,
+                    countryTwo: null,
                     language: null,
                     state: '',
                     city: '',
+                    postalCode: '',
                     password: '',
                     confirmPassword: '',
                 }}
                 validate={validateForm}
                 onSubmit={async (values, { setSubmitting }) => {
-                    const { email, password, firstName, lastName, country, language } = values;
+                    const { email, password, firstName, lastName, country, language, countryTwo, postalCode, city, state } = values;
 
                     try {
                         const { data, error } = await supabase.auth.signUp({
@@ -91,6 +93,10 @@ const SignUp = () => {
                                     lastName,
                                     country: country.label,
                                     language: language.label,
+                                    countryTwo: countryTwo.label, 
+                                    postalCode, 
+                                    city, 
+                                    state
                                 },
                             },
                         });
@@ -157,11 +163,10 @@ const SignUp = () => {
                                         <Select
                                             options={countries}
                                             placeholder="Select another country of Interest"
-                                            onChange={(option) => setFieldValue('country', option)}
+                                            onChange={(option) => setFieldValue('countryTwo', option)}
                                             classNamePrefix="react-select"
                                             className={touched.country && fieldErrors.country ? 'signup__error-border' : 'signup__input'}
                                         />
-                                        <ErrorMessage name="country" component="div" className="error-message" />
                                     </div>
                                     <div className="signup__container">
                                         <Select
@@ -177,7 +182,7 @@ const SignUp = () => {
                                         <Field
                                             type="text"
                                             name="state"
-                                            placeholder="Enter your State"
+                                            placeholder="State"
                                             className={touched.state && fieldErrors.state ? 'signup__error-border' : 'signup__input'}
                                         />
                                         <ErrorMessage name="state" component="div" className="error-message" />
@@ -186,10 +191,19 @@ const SignUp = () => {
                                         <Field
                                             type="text"
                                             name="city"
-                                            placeholder="Enter your City"
+                                            placeholder="City"
                                             className={touched.city && fieldErrors.city ? 'signup__error-border' : 'signup__input'}
                                         />
                                         <ErrorMessage name="city" component="div" className="error-message" />
+                                    </div>
+                                    <div className="signup__container">
+                                        <Field
+                                            type="text"
+                                            name="postalCode"
+                                            placeholder="Three first digit of your postal Code"
+                                            className={touched.city && fieldErrors.city ? 'signup__error-border' : 'signup__input'}
+                                        />
+                                        <ErrorMessage name="postalCode" component="div" className="error-message" />
                                     </div>
                                     <div className='signup__container'>
                                         <Field
