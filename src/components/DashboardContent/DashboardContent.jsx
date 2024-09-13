@@ -58,7 +58,7 @@ function DashboardContent() {
                 <Box
                     sx={{
                         width: 1,
-                        height: 250,
+                        height: 150,
                         borderRadius: 1,
                         bgcolor: '#9d5a4d',
                         display: 'flex',
@@ -104,16 +104,25 @@ function DashboardContent() {
                             <Item>Full Name: {user.user_metadata.firstName} {user.user_metadata.lastName } </Item>
                         </Grid>
                         <Grid size={6}>
-                            <Item>Postal Code:</Item>
+                            <Item>Preferred Country: {user.user_metadata.country}</Item>
                         </Grid>
                         <Grid size={6}>
-                            <Item>Preferred Country: {user.user_metadata.country}</Item>
+                            <Item>Another Preferred Country: {user.user_metadata.countryTwo}</Item>
                         </Grid>
                         <Grid size={6}>
                             <Item>Preferred Language: {user.user_metadata.language}</Item>
                         </Grid>
                         <Grid size={6}>
                             <Item>Email: {user.email}</Item>
+                        </Grid>
+                        <Grid size={6}>
+                            <Item>State: {user.user_metadata.state}</Item>
+                        </Grid>
+                        <Grid size={6}>
+                            <Item>City: {user.user_metadata.city}</Item>
+                        </Grid>
+                        <Grid size={12 }>
+                            <Item>Postal Code: {user.user_metadata.postalCode}</Item>
                         </Grid>
                     </Grid>
                 </Box>

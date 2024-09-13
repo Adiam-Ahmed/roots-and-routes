@@ -11,7 +11,7 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import Logo from '../../assets/Logo.png'
 import DashboardContent from '../../components/DashboardContent/DashboardContent';
-import Grocery from '../../components/Grocery/Grocery';
+import CommunityConnections from '../../components/CommunityConnections/CommunityConnections';
 import ResourceHub from '../../components/ResourceHub/ResourceHub';
 import Events from '../../components/Events/Events';
 
@@ -39,8 +39,8 @@ const NAVIGATION = [
     icon: <BarChartIcon />,
     children: [
       {
-        segment: 'grocery',
-        title: 'Grocery',
+        segment: 'communityconnections',
+        title: 'Community Connections',
         icon: <DescriptionIcon />,
       },
       {
@@ -92,7 +92,7 @@ const demoTheme = createTheme({
   },
 });
 
-
+///Cultural Events  Community Connections
 function DemoPageContent({ pathname }) {
   let content;
 
@@ -100,8 +100,8 @@ function DemoPageContent({ pathname }) {
     case '/dashboard':
       content = <DashboardContent />;
       break;
-    case '/culturalconnect/grocery':
-      content = <Grocery />;
+    case '/culturalconnect/communityconnections':
+      content = <CommunityConnections />;
       break;
     case '/culturalconnect/events':
       content = <Events />;
