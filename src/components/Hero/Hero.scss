@@ -3,6 +3,9 @@
 .hero{
     background-color: $secondary-color;
     padding-top: 1rem;
+    &__title{
+        padding-top: 4rem;
+    }
     &__content{
         display: flex;
         flex-direction: column;

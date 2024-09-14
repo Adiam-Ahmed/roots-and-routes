@@ -1,0 +1,22 @@
+@use '../../styles/global.scss' as *;
+
+.cta {
+    background-color: #00abff;
+
+    &__title {
+        padding-top: 1rem;
+        color: #fff;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: 2rem;
+        color: #fff;
+    }
+
+
+}
