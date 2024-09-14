@@ -38,7 +38,7 @@ const WhyUs = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    minHeight: '400px',
+                    minHeight: '50vh',
                     padding: '20px',
                 }}
             >

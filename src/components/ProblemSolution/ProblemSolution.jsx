@@ -78,6 +78,7 @@ const ProblemSolution = () => {
     };
     return (
         <div className="carousel">
+            <h1 className="carousel__title">What Newcomers face ?</h1>
             <div className="carousel-images">
                 <AnimatePresence>
                     <motion.img
