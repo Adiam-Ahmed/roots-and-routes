@@ -27,6 +27,7 @@ const Testimonials = () => {
     };
 
     return (
+        
         <Box
             sx={{
                 display: 'flex',
@@ -42,7 +43,7 @@ const Testimonials = () => {
                     onClick={() => handleCardClick(index)}
                     sx={{
                         width: 800,
-                        height: 700,
+                        height: 500,
                         position: 'absolute',
                         zIndex: activeCard === index ? 4 : index + 1,
                         transform: `translate(${(index + 1) * 20}px, ${(index + 1) * 20}px)`,

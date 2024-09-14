@@ -1,10 +1,9 @@
 import React from 'react'
 import './WhyUs.scss'
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import CTAButton from '../UI/CTAButton/CTAButton';
 import { useNavigate } from "react-router-dom";
-
 
 const cardData = [
     {
@@ -22,11 +21,12 @@ const cardData = [
 ];
 
 const WhyUs = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleNavigate = (route) => {
-        navigate(route)
-    }
+        navigate(route);
+    };
+
     return (
         <section className="hero">
             <div className="hero__content">
@@ -61,20 +61,19 @@ const WhyUs = () => {
             </Box>
             <section className='cta'>
                 <div className="cta__content">
-                    <h1 className="cta__title">Ready to Start Your Journey ?</h1>
+                    <h1 className="cta__title">Ready to Start Your Journey?</h1>
                     <p className="cta__subtitle">Join Roots and Routes today for a personalized experience tailored just for you.</p>
 
                     <CTAButton
-                        className={`join`}
+                        className="join"
                         text="Join Now"
                         type="join"
                         onClick={() => handleNavigate("/signup")}
                     />
                 </div>
-
             </section>
         </section>
-    )
+    );
 }
 
-export default WhyUs
+export default WhyUs;
