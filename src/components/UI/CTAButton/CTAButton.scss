@@ -96,3 +96,27 @@
         color: $color-white;
     }
 }
+
+.cta-button__join{
+    background: #55694b;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 20px;
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: white;
+    font-size: 19px;
+    text-decoration: none;
+    vertical-align: middle;
+    margin-bottom: 2rem;
+    
+    &:hover {
+        border-top-color: #28597a;
+        background-color: #45a049;
+        color: #ccc;
+    }
+    
+    &:active {
+        border-top-color: #1b435e;
+        background-color: #388E3C;
+    }
+}

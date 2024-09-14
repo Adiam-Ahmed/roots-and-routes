@@ -6,6 +6,7 @@ import Overview from '../../components/Overview/Overview';
 import Cards from '../../components/Cards/Cards';
 import Footer from '../../components/Footer/Footer';
 import ProblemSolution from '../../components/ProblemSolution/ProblemSolution'
+import WhyUs from '../../components/WhyUs/WhyUs';
 
 const LandingPage = () => {
     return (
@@ -13,7 +14,8 @@ const LandingPage = () => {
             <Header />
             <Outlet />
             <Hero />
-            <ProblemSolution />  
+            <ProblemSolution />
+            <WhyUs />
             <Overview />
             <Cards />
             <Footer />
