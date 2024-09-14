@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"
 import Overview from '../../components/Overview/Overview';
 import Cards from '../../components/Cards/Cards';
 import Footer from '../../components/Footer/Footer';
-
+import ProblemSolution from '../../components/ProblemSolution/ProblemSolution'
 
 const LandingPage = () => {
     return (
@@ -13,6 +13,7 @@ const LandingPage = () => {
             <Header />
             <Outlet />
             <Hero />
+            <ProblemSolution />  
             <Overview />
             <Cards />
             <Footer />
