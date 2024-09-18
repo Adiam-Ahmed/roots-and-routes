@@ -1,5 +1,28 @@
 @use '../../styles/global.scss' as *;
 
+
+.whyus {
+    background-color: $primary-color;
+    padding-top: 1rem;
+
+    &__title {
+        padding-top: 4rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem
+    }
+
+    &__img {
+        width: 95%;
+        height: 40rem;
+    }
+}
+
 .cta {
     background-color: #00abff;
 

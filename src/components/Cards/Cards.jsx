@@ -9,11 +9,11 @@ import PromoteCommunity from '../../assets/PromoteCommunity.jpg'
 
 const Cards = () => {
     const cardData = [
-        { image: Support, text: 'Support Integration', paragraph : 'The process of blending diverse individuals into a unified whole, where each person’s unique contributions enhance the collective stength and cohesion of the group ' },
+        { image: Support, text: 'You Belong Here', paragraph : 'The process of blending diverse individuals into a unified whole, where each person’s unique contributions enhance the collective stength and cohesion of the group ' },
         {
             image: Culture , text: 'Promote Community', paragraph : 'The thread that binds individuals together ,creating a shared sense of belonging and collective strength through mutual support and common purpose' },
         {
-            image: PromoteCommunity, text: 'Cultural Preservation', paragraph: 'The act of keeping the essence of our heritage alive for future generations, ensuring that our history and identity remains vibrant and relevant ' },
+            image: PromoteCommunity, text: 'Cultural Preservation', paragraph: ' Stay Connected to your roots by keeping the essence of your heritage alive for future generations, ensuring that your history and identity remains vibrant and relevant ' },
     ];
     return (
         <section className="cards">
