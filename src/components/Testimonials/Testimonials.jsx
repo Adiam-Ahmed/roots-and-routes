@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Testimonials.scss';
 import { Card, CardContent, Typography, Box, CardActionArea } from '@mui/material';
 
 const testimonialsData = [
@@ -27,54 +28,59 @@ const Testimonials = () => {
     };
 
     return (
-        
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                minHeight: '100vh',
-                position: 'relative',
-            }}
-        >
-            {testimonialsData.map((testimonial, index) => (
-                <CardActionArea
-                    key={index}
-                    onClick={() => handleCardClick(index)}
+        <>
+            <div className="testimonial">
+                <h1 className="testimonial__title">Newcomer Experiences.</h1>
+                <h3 className="testimonial__subtitle">Real stories from those who have faced the journey of starting anew in Canada.</h3>
+                <Box
                     sx={{
-                        width: 800,
-                        height: 500,
-                        position: 'absolute',
-                        zIndex: activeCard === index ? 4 : index + 1,
-                        transform: `translate(${(index + 1) * 20}px, ${(index + 1) * 20}px)`,
-                        boxShadow: activeCard === index ? 9 : 3 * (index + 1),
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        minHeight: '80vh',
+                        position: 'relative',
                     }}
                 >
-                    <Card
-                        sx={{
-                            height: '100%',
-                            backgroundColor: activeCard === index
-                                ? '#ffecb3' // Color for active card
-                                : index % 2 === 0
-                                    ? '#f0f4c3' // Alternate color for even inactive cards
-                                    : '#e3f2fd', // Alternate color for odd inactive cards
-                        }}
-                    >
-                        <CardContent>
-                            <Typography variant="h5">
-                                {testimonial.name}
-                            </Typography>
-                            <Typography variant="subtitle1">
-                                {testimonial.country}
-                            </Typography>
-                            <Typography variant="body2">
-                                {testimonial.message}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </CardActionArea>
-            ))}
-        </Box>
+                    {testimonialsData.map((testimonial, index) => (
+                        <CardActionArea
+                            key={index}
+                            onClick={() => handleCardClick(index)}
+                            sx={{
+                                width: 500,
+                                height: 300,
+                                position: 'absolute',
+                                zIndex: activeCard === index ? 4 : index + 1,
+                                transform: `translate(${(index + 1) * 20}px, ${(index + 1) * 20}px)`,
+                                boxShadow: activeCard === index ? 9 : 3 * (index + 1),
+                            }}
+                        >
+                            <Card
+                                sx={{
+                                    height: '100%',
+                                    backgroundColor: activeCard === index
+                                        ? '#ffecb3' // Color for active card
+                                        : index % 2 === 0
+                                            ? '#f0f4c3' // Alternate color for even inactive cards
+                                            : '#e3f2fd', // Alternate color for odd inactive cards
+                                }}
+                            >
+                                <CardContent>
+                                    <Typography variant="h5">
+                                        {testimonial.name}
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        {testimonial.country}
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        {testimonial.message}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </CardActionArea>
+                    ))}
+                </Box>
+            </div>
+        </>
     );
 };
 

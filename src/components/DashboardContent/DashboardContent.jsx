@@ -40,7 +40,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function DashboardContent() {
     const { user } = useAuth();
-    console.log(user)
     const navigate = useNavigate();
 
     const fullName = user.user_metadata.firstName;

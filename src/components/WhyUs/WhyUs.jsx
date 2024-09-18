@@ -44,7 +44,7 @@ const WhyUs = () => {
             >
                 <Grid container spacing={8} justifyContent="center" maxWidth="lg">
                     {cardData.map((card, index) => (
-                        <Grid item xs={12} sm={8} md={6} key={index}>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
                             <Card sx={{ minHeight: 400, padding: 2 }}>
                                 <CardContent>
                                     <Typography variant="h4" component="div" gutterBottom>
