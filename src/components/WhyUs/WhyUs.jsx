@@ -7,16 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 const cardData = [
     {
-        title: 'Card 1',
-        description: 'This is the description for card 1.',
+        title: 'Customized Resources',
+        description: 'Tailored resources to match your profile and unique needs.',
     },
     {
-        title: 'Card 2',
-        description: 'This is the description for card 2.',
+        title: 'Local Connections',
+        description: 'Find community events and meet others in your area.',
     },
     {
-        title: 'Card 3',
-        description: 'This is the description for card 3.',
+        title: 'Guidance & Support',
+        description: 'Receive mentorship and support from industry experts.',
     },
 ];
 
@@ -28,10 +28,10 @@ const WhyUs = () => {
     };
 
     return (
-        <section className="hero">
-            <div className="hero__content">
-                <h1 className="hero__title">What We Offer</h1>
-                <h3 className="hero__subtitle">Personalized support and resources to help you thrive in Canada.</h3>
+        <section className="whyus">
+            <div className="whyus__content">
+                <h1 className="whyus__title">What We Offer</h1>
+                <h3 className="whyus__subtitle">Personalized support and resources to help you thrive in Canada.</h3>
             </div>
             <Box
                 sx={{
@@ -44,8 +44,8 @@ const WhyUs = () => {
             >
                 <Grid container spacing={8} justifyContent="center" maxWidth="lg">
                     {cardData.map((card, index) => (
-                        <Grid item xs={12} sm={8} md={6} key={index}>
-                            <Card sx={{ minHeight: 400, padding: 2 }}>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <Card sx={{ minHeight: 200, padding: 2 }}>
                                 <CardContent>
                                     <Typography variant="h4" component="div" gutterBottom>
                                         {card.title}

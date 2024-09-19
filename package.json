@@ -21,6 +21,7 @@
     "formik": "^2.4.6",
     "framer-motion": "^12.0.0-alpha.0",
     "iso-639-1": "^3.1.3",
+    "openai": "^4.61.1",
     "popmotion": "^11.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -54,6 +55,8 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-plugin-deno": "^0.0.1",
     "sass": "^1.78.0"
   }
 }

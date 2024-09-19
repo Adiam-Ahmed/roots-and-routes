@@ -19,7 +19,7 @@ const Hero = () => {
                 <h3 className="hero__subtitle">We’re here to help you settle in, connect, and thrive in your new life.</h3>
                 <CTAButton
                     className={`header`}
-                    text="Get Started"
+                    text="JOIN NOW"
                     type="primary"
                     onClick={() => handleNavigate("/signup")}
                 />

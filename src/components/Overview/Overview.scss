@@ -16,6 +16,10 @@
             flex-wrap: nowrap;
         }
     }
+    &__title{
+        text-align: center;
+        padding: 1rem 0;
+    }
 
     &__subtitle,
     &__img {
