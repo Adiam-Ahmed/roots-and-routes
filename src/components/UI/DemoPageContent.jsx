@@ -14,17 +14,14 @@ function DemoPageContent({ pathname }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    
+
     const getQuery = () => {
         switch (pathname) {
             case '/culturalconnect/communityconnections':
-                return `search the web and find a Community hub that matches a newcomer from ${user.user_metadata.country} 
+                return `search the web and find three community-based non-profit and charitable organization of people hub that matches a newcomer with a community from ${user.user_metadata.country} 
                     and ${user.user_metadata.countryTwo} and who speaks ${user.user_metadata.language} 
                     and is residing in ${user.user_metadata.city}, ${user.user_metadata.state}. Generate it as a key-value pair object in a format 
                     {"description": "description of the Community Centre importance", "centers": [{"name": "", "address": "","language_support": "","programs_offered": "","newcomer_friendly": "","contact": "","website": "","websiteThumbnail": ""}],"disclaimer": ""}`;
-            case '/culturalconnect/events':
-                return `search the web for upcoming events that are important for newcomers from ${user.user_metadata.country} 
-                    and ${user.user_metadata.countryTwo} living in ${user.user_metadata.city}, ${user.user_metadata.state}. Generate it in key-value pairs`;
             case '/resourcehub':
                 return `search the web for resources that will help newcomers from ${user.user_metadata.country} 
                     and ${user.user_metadata.countryTwo}, residing in ${user.user_metadata.city}, ${user.user_metadata.state}. 
@@ -56,8 +53,9 @@ function DemoPageContent({ pathname }) {
         };
 
         fetchData();
-    }, [pathname]);  // Rerun when pathname changes
+    }, [pathname]);
 
+    
     let content;
 
     switch (pathname) {
@@ -74,7 +72,9 @@ function DemoPageContent({ pathname }) {
             );
             break;
         case '/culturalconnect/events':
-            content = <Events />;
+            content = (
+                <Events />
+            );
             break;
         case '/resourcehub':
             content = <ResourceHub />;
