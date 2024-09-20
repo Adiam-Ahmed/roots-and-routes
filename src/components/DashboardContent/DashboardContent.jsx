@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { supabase } from '../../supabaseClient';
+import { supabase } from '../../supabaseClient.js';
 import { Box, ThemeProvider, createTheme } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import CTAButton from '../UI/CTAButton/CTAButton';
+import CTAButton from '../UI/CTAButton/CTAButton.jsx';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
