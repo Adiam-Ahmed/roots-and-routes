@@ -1,0 +1,48 @@
+[
+        {
+            "Event Name": "Eritrean Canadian Community Centre (ECCC) Monthly Meetings",
+            "Organization": "Eritrean Canadian Community Centre",
+            "Details": "Monthly meeting series to discuss community matters and provide resources for newcomers.",
+            "Date": "Exact dates to be confirmed on their website",
+            "Location": "1965 Davenport Rd, Unit 3, North York, ON, M6N 1B2",
+            "Website": "http://www.eccc-sc.org/",
+            "img": "https://www.eccc-sc.org/images/community-meeting.jpg"
+        },
+        {
+            "Event Name": "Arab Canadian Women Network Gathering",
+            "Organization": "Arab Community Centre of Toronto",
+            "Details": "A monthly meet-up to help Arab women to network, share experiences and get support.",
+            "Date": "Exact dates to be confirmed on their website",
+            "Location": "555 Richmond St W #411, North York, ON",
+            "Website": "http://www.arabcommunitycentre.com/",
+            "img": "https://www.arabcommunitycentre.com/images/women-network.jpg"
+        },
+        {
+            "Event Name": "Youth Newcomer Group",
+            "Organization": "COSTI",
+            "Details": "This event offers Eritrean and Saudi Arabian youth various recreational activities, homework support, and group workshops focused on settlement and mental health topics.",
+            "Date": "Every Wednesday 4:30pm-6:30pm",
+            "Location": "COSTI North York Centre, 1700 Wilson Avenue, Suite 114",
+            "Website": "https://www.costi.org/",
+            "img": "https://www.costi.org/images/youth-group.jpg"
+        },
+        {
+            "Event Name": "Career and Employment Workshops",
+            "Organization": "The North York Community House",
+            "Details": "Workshops dedicated to assisting newcomers in understanding the Canadian job market and developing their career skills.",
+            "Date": "Every Tuesday and Thursday from 2pm-4pm",
+            "Location": "700 Lawrence Ave W #226, North York, ON",
+            "Website": "http://www.nych.ca/",
+            "img": "https://www.nych.ca/images/employment-workshop.jpg"
+        },
+        {
+            "Event Name": "Arabic Social Services",
+            "Organization": "Arab Community Centre of Toronto",
+            "Details": "Provides Arabic social services including counselling, resource navigation, translating documents etc.",
+            "Date": "Monday-Friday 9am-5pm",
+            "Location": "555 Richmond St W #411, North York, ON",
+            "Website": "http://www.arabcommunitycentre.com/",
+            "img": "https://www.arabcommunitycentre.com/images/social-services.jpg"
+        }
+    ]
+
