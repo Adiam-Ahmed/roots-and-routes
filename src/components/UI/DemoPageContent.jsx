@@ -18,7 +18,7 @@ function DemoPageContent({ pathname }) {
     const getQuery = () => {
         switch (pathname) {
             case '/culturalconnect/communityconnections':
-                return `search the web and find three community-based non-profit and charitable organization of people hub that matches a newcomer with a community from ${user.user_metadata.country} 
+                return `search the web and find three community-based non-profit and organization of people hub that matches a newcomer with a community from ${user.user_metadata.country} 
                     and ${user.user_metadata.countryTwo} and who speaks ${user.user_metadata.language} 
                     and is residing in ${user.user_metadata.city}, ${user.user_metadata.state}. Generate it as a key-value pair object in a format 
                     {"description": "description of the Community Centre importance", "centers": [{"name": "", "address": "","language_support": "","programs_offered": "","newcomer_friendly": "","contact": "","website": "","websiteThumbnail": ""}],"disclaimer": ""}`;
